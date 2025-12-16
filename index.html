@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Jesu</title>
+    <title>Para Mi Amor</title>
     <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="main.css"> 
 </head>
@@ -32,5 +32,26 @@
             </div>
             </div>
     </div>
-    </body>
+
+    <script>
+        document.addEventListener('dblclick', function(e) {
+            // 1. Crear el elemento div que representará el beso
+            var besito = document.createElement('div');
+            besito.classList.add('besito');
+
+            // 2. Posicionar el elemento donde ocurrió el doble clic
+            besito.style.left = (e.clientX - 10) + 'px';
+            besito.style.top = (e.clientY - 10) + 'px';
+
+            // 3. Añadir el beso al cuerpo del documento (visible en la pantalla)
+            document.body.appendChild(besito);
+
+            // 4. Eliminar el beso después de que la animación termine (1000ms o 1 segundo)
+            setTimeout(function() {
+                besito.remove();
+            }, 1000); 
+        });
+    </script>
+
+</body>
 </html>
