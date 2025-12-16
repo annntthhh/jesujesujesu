@@ -1,111 +1,98 @@
 /* -------------------------------------- */
-/* CONFIGURACIÓN BASE Y FONDO */
+/* 1. ESTILOS GLOBALES Y ANIMACIÓN DEL CORAZÓN */
 /* -------------------------------------- */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f4f8; /* Color suave de fondo (Gris/Azul claro) */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
 }
 
-.escena-peanuts {
-    width: 100vw;
-    height: 100vh;
-    border: 8px solid black; 
-    box-sizing: border-box;
+/* Animación de latido del corazón */
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* -------------------------------------- */
+/* 2. DISEÑO DE LA TARJETA CENTRAL */
+/* -------------------------------------- */
+.tarjeta-contenedor {
+    perspective: 1000px; /* Para futuros efectos 3D, si quieres */
+}
+
+.tarjeta {
+    width: 350px;
+    height: 450px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.05); /* Sombra elegante */
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.5s;
+}
+
+/* Efecto al pasar el mouse (para que se sienta interactiva) */
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* -------------------------------------- */
+/* 3. ELEMENTO PRINCIPAL: EL CORAZÓN */
+/* -------------------------------------- */
+.corazon-animado {
+    width: 60px;
+    height: 60px;
+    background-color: #ff69b4; /* Rosa fuerte */
     position: relative;
-    overflow: hidden;
+    margin: 30px auto;
+    transform: rotate(-45deg);
+    animation: latido 1.5s infinite; /* Aplica la animación */
 }
-
-/* Fondo: Cielo y Césped (Colores planos) */
-.cielo {
-    background-color: #add8e6; /* Azul claro */
-    height: 70%;
+/* Creación de la forma del corazón con pseudo-elementos */
+.corazon-animado::before,
+.corazon-animado::after {
+    content: "";
+    width: 60px;
+    height: 60px;
+    background-color: #ff69b4;
+    border-radius: 50%;
     position: absolute;
-    width: 100%;
+}
+.corazon-animado::before {
+    left: -30px;
     top: 0;
 }
-
-.cesped {
-    background-color: #8fbc8f; /* Verde oliva/bosque */
-    height: 30%;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+.corazon-animado::after {
+    top: -30px;
+    left: 0;
 }
 
 /* -------------------------------------- */
-/* POSICIONAMIENTO DE LA IMAGEN DE SNOOPY */
+/* 4. ESTILOS DE TEXTO */
 /* -------------------------------------- */
-.ilustracion-central {
-    position: absolute;
-    width: 450px; /* Tamaño de la imagen para que quepa bien en el diseño */
-    height: auto;
-    
-    /* Posicionamiento en la izquierda, sobre el césped */
-    top: 50%;
-    left: 20%;
-    transform: translate(-50%, -50%); /* Centrado horizontal de la imagen */
-    
-    z-index: 10;
-    border: none;
-    box-shadow: none; 
+h1 {
+    font-size: 1.8em;
+    color: #444;
+    margin-bottom: 20px;
 }
 
-/* -------------------------------------- */
-/* CUADROS DE MENSAJE (Estilo Inclinado) */
-/* -------------------------------------- */
-.cuadro-mensaje {
-    position: absolute;
-    border: 4px solid black;
-    padding: 15px;
-    line-height: 1.4;
-    box-shadow: 4px 4px 0 black; /* Sombra estilo cómic */
-    z-index: 20;
-    color: black;
-}
-
-.mensaje-principal {
-    background-color: white;
-    width: 250px;
-    top: 40%;
-    left: 48%;
-    transform: rotate(3deg); /* Inclinación ligera */
-}
-
-.razones-secundario {
-    background-color: #fffacd; /* Amarillo pálido/crema */
-    width: 220px;
-    top: 30%;
-    left: 75%;
-    transform: rotate(-5deg); /* Inclinación opuesta */
-}
-
-.cuadro-mensaje h2, .cuadro-mensaje h3 {
-    margin: 5px 0 10px 0;
-    border-bottom: 2px solid black;
-    padding-bottom: 5px;
-    font-size: 1.4em;
-}
-
-.razones-secundario h3 {
-    border-bottom: 2px dashed black;
-}
-
-.cuadro-mensaje ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.cuadro-mensaje li {
-    margin: 5px 0;
-    line-height: 1.2;
+.contenido-mensaje p {
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
 .firma {
+    color: #ff69b4;
     font-style: italic;
-    text-align: right;
-    margin-top: 10px !important;
-    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 30px !important;
+    font-size: 1.2em;
 }
