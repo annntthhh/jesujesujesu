@@ -25,9 +25,9 @@
                 <div class="corazon-animado"></div>
 
                 <div class="contenido-mensaje">
-                    <p>Este es un espacio especial solo para ti.</p>
-                    <p>Te envío todo mi amor y cariño en esta pequeña tarjeta.</p>
-                    <p class="firma">- Siempre tuya</p>
+                    <p>Este es otro detalle especial solo para ti</p>
+                    <p>Te envío todo mi amor en esta pequeña tarjetita.</p>
+                    <p class="firma">- Ane</p>
                 </div>
             </div>
             <div class="reverso">
@@ -42,7 +42,7 @@
 
     <script>
         // --- CONFIGURACIÓN DE LA CLAVE ---
-        const CLAVE_SECRETA = "8888"; // ¡Cámbiala a lo que necesites!
+        const CLAVE_SECRETA = "8888"; // !!! CAMBIA ESTA CLAVE SECRETA !!!
         // ---------------------------------
         
         const bloqueador = document.getElementById('bloqueador');
@@ -51,19 +51,26 @@
         const claveBoton = document.getElementById('claveBoton');
         const mensajeError = document.getElementById('mensajeError');
 
+        // --- FUNCIÓN DE VERIFICACIÓN DE CLAVE ---
         function verificarClave() {
             if (claveInput.value.toLowerCase() === CLAVE_SECRETA) {
                 // Clave correcta: ocultar bloqueador y mostrar tarjeta
-                bloqueador.style.display = 'none';
-                tarjetaContenido.classList.remove('oculto');
-                // Quitar la clase 'oculto' del body para reactivar los destellos de fondo
-                document.body.classList.remove('oculto'); 
+                bloqueador.style.opacity = 0;
+                
+                // Detener los corazones flotantes
+                clearInterval(intervaloCorazones);
+
+                // Esperar a que la transición de opacidad termine antes de ocultar
+                setTimeout(() => { 
+                    bloqueador.style.display = 'none';
+                    tarjetaContenido.classList.remove('oculto');
+                }, 500); 
 
             } else {
                 // Clave incorrecta: mostrar mensaje de error
                 mensajeError.style.opacity = 1;
-                claveInput.value = ''; // Limpiar el input
-                claveInput.focus(); // Enfocar para reintentar
+                claveInput.value = ''; 
+                claveInput.focus(); 
                 setTimeout(() => { mensajeError.style.opacity = 0; }, 2000);
             }
         }
@@ -77,11 +84,53 @@
         });
 
         // ----------------------------------------------------
-        // Lógica del Besito (solo se activa después de la clave)
+        // LÓGICA DE CORAZONES FLOTANTES EN PANTALLA DE CLAVE
+        // ----------------------------------------------------
+        function crearCorazon(origen) {
+            const corazon = document.createElement('div');
+            corazon.classList.add('corazon-flotante');
+            
+            const anchoPantalla = window.innerWidth;
+            // Posicionamiento en el centro (25% a 75% del ancho)
+            const posicionX = Math.random() * (anchoPantalla * 0.5) + (anchoPantalla * 0.25); 
+            corazon.style.left = posicionX + 'px';
+            
+            let duracion = Math.random() * 5 + 5; 
+
+            if (origen === 'arriba') {
+                corazon.style.top = '-50px';
+                corazon.style.animation = `flotar-abajo ${duracion}s linear forwards`;
+            } else { // 'abajo'
+                corazon.style.bottom = '-50px';
+                corazon.style.animation = `flotar-arriba ${duracion}s linear forwards`;
+            }
+            
+            document.body.appendChild(corazon);
+
+            setTimeout(() => {
+                corazon.remove();
+            }, duracion * 1000 + 500);
+        }
+
+        // Lanzar un corazón de forma aleatoria (arriba o abajo)
+        function lanzarCorazon() {
+            if (Math.random() < 0.5) {
+                crearCorazon('arriba');
+            } else {
+                crearCorazon('abajo');
+            }
+        }
+
+        // Iniciar el lanzamiento de corazones cada 500 milisegundos
+        const intervaloCorazones = setInterval(lanzarCorazon, 500);
+
+
+        // ----------------------------------------------------
+        // Lógica del Besito (DOBLE CLIC)
         // ----------------------------------------------------
         document.addEventListener('dblclick', function(e) {
             // Solo activar los besitos si la tarjeta es visible
-            if (tarjetaContenido.classList.contains('oculto')) {
+            if (bloqueador.style.display !== 'none') {
                 return; 
             }
             
