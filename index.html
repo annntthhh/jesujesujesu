@@ -42,7 +42,7 @@
 
     <script>
         // --- CONFIGURACIÓN DE LA CLAVE ---
-        const CLAVE_SECRETA = "8888"; // !!! CAMBIA ESTA CLAVE SECRETA !!!
+        const CLAVE_SECRETA = "8888"; // Clave actual
         // ---------------------------------
         
         const bloqueador = document.getElementById('bloqueador');
@@ -84,7 +84,7 @@
         });
 
         // ----------------------------------------------------
-        // LÓGICA DE CORAZONES FLOTANTES EN PANTALLA DE CLAVE
+        // LÓGICA DE CORAZONES FLOTANTES EN PANTALLA DE CLAVE (ACTIVO AL INICIO)
         // ----------------------------------------------------
         function crearCorazon(origen) {
             const corazon = document.createElement('div');
@@ -121,7 +121,7 @@
             }
         }
 
-        // Iniciar el lanzamiento de corazones cada 500 milisegundos
+        // Iniciar el lanzamiento de corazones cada 500 milisegundos (ESTO LO HACE AL CARGAR LA PÁGINA)
         const intervaloCorazones = setInterval(lanzarCorazon, 500);
 
 
