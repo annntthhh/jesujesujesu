@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Mi Amor</title>
+    <title>Para Jesu</title>
     <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="main.css"> 
 </head>
@@ -42,7 +42,7 @@
 
     <script>
         // --- CONFIGURACIÓN DE LA CLAVE ---
-        const CLAVE_SECRETA = "8888"; // Clave actual
+        const CLAVE_SECRETA = "8888"; // !!! CAMBIA ESTA CLAVE SI ES NECESARIO !!!
         // ---------------------------------
         
         const bloqueador = document.getElementById('bloqueador');
@@ -57,8 +57,7 @@
                 // Clave correcta: ocultar bloqueador y mostrar tarjeta
                 bloqueador.style.opacity = 0;
                 
-                // Detener los corazones flotantes
-                clearInterval(intervaloCorazones);
+                // Los corazones flotantes NO se detienen para que sigan apareciendo en la tarjeta.
 
                 // Esperar a que la transición de opacidad termine antes de ocultar
                 setTimeout(() => { 
@@ -84,14 +83,13 @@
         });
 
         // ----------------------------------------------------
-        // LÓGICA DE CORAZONES FLOTANTES EN PANTALLA DE CLAVE (ACTIVO AL INICIO)
+        // LÓGICA DE CORAZONES FLOTANTES EN PANTALLA (CONTINUOS)
         // ----------------------------------------------------
         function crearCorazon(origen) {
             const corazon = document.createElement('div');
             corazon.classList.add('corazon-flotante');
             
             const anchoPantalla = window.innerWidth;
-            // Posicionamiento en el centro (25% a 75% del ancho)
             const posicionX = Math.random() * (anchoPantalla * 0.5) + (anchoPantalla * 0.25); 
             corazon.style.left = posicionX + 'px';
             
@@ -121,7 +119,7 @@
             }
         }
 
-        // Iniciar el lanzamiento de corazones cada 500 milisegundos (ESTO LO HACE AL CARGAR LA PÁGINA)
+        // Iniciar el lanzamiento de corazones cada 500 milisegundos.
         const intervaloCorazones = setInterval(lanzarCorazon, 500);
 
 
