@@ -3,7 +3,7 @@
 /* -------------------------------------- */
 body {
     /* Fondo rosa más sutil */
-    background: linear-gradient(135deg, #f9a4b8 0%, #f57795 100%); 
+    background: linear-gradient(135deg, #fce9ee 0%, #f7c9d7 100%); 
     
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -92,9 +92,10 @@ body::before {
 .corazon-animado {
     width: 60px;
     height: 60px;
-    background-color: #8B0000; /* CAMBIO 2: Rojo oscuro para el corazón */
+    background-color: #8B0000; 
     position: relative;
-    margin: 30px auto;
+    /* CAMBIO 2: Reducimos el margen superior e inferior para subir el texto */
+    margin: 15px auto 10px auto; 
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; 
 }
@@ -104,7 +105,7 @@ body::before {
     content: "";
     width: 60px;
     height: 60px;
-    background-color: #8B0000; /* CAMBIO 3: Rojo oscuro para los pseudo-elementos del corazón */
+    background-color: #8B0000;
     border-radius: 50%;
     position: absolute;
 }
@@ -122,21 +123,28 @@ body::before {
 /* -------------------------------------- */
 h1 {
     font-size: 1.8em;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-.contenido-mensaje p {
-    color: #666;
-    font-size: 1.1em;
-    line-height: 1.6;
+    /* CAMBIO 3: Título más oscuro */
+    color: #222; 
+    /* CAMBIO 4: Reducimos margen para subir el texto */
     margin-bottom: 15px;
 }
 
+.contenido-mensaje p {
+    /* CAMBIO 5: Párrafos más oscuros y fuente bonita */
+    color: #333; 
+    font-size: 1.2em; /* Un poco más grande para la fuente cursiva */
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-family: 'Sacramento', cursive; /* APLICAR FUENTE */
+    font-weight: 600; /* Un poco más de grosor para la fuente cursiva */
+}
+
 .firma {
-    color: #7C0A02; /* CAMBIO 4: Color Borgoña/Rojo oscuro para la firma */
+    color: #7C0A02; 
+    /* CAMBIO 6: Usamos la fuente Sacramento y aumentamos el tamaño */
+    font-family: 'Sacramento', cursive;
     font-style: italic;
     font-weight: bold;
     margin-top: 30px !important;
-    font-size: 1.2em;
+    font-size: 2.2em; /* Hacemos la firma mucho más grande */
 }
