@@ -53,7 +53,7 @@ body::before {
 
 /* Contenedor principal de la tarjeta volteable */
 .tarjeta {
-    width: 350px;
+    width: 350px; /* Ancho estándar para escritorio */
     min-height: 500px; 
     background-color: transparent; 
     border-radius: 20px;
@@ -103,6 +103,7 @@ body::before {
     height: 60px;
     background-color: #8B0000; 
     position: relative;
+    /* Margen ajustado para escritorio */
     margin: 30px auto 10px auto; 
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; 
@@ -177,43 +178,38 @@ h1 {
 /* ====================================== */
 @media (max-width: 450px) {
     
-    /* Adaptar el contenedor principal de la tarjeta al ancho de la pantalla */
     .tarjeta {
-        width: 90vw; /* Usa el 90% del ancho del viewport */
-        min-height: 400px; /* Reducimos un poco la altura mínima */
-        padding: 0; /* Aseguramos que el padding se maneja en las caras */
+        /* Ancho final ajustado para móvil (80% con límite de 320px) */
+        width: 80vw; 
+        max-width: 320px; 
+        min-height: 400px; 
+        padding: 0; 
     }
     
-    /* Aseguramos que las caras se ajusten correctamente */
     .frente, .reverso {
-        padding: 20px; /* Reducimos el padding en pantallas pequeñas */
+        padding: 20px; /* Reducción de padding en móvil */
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
-    /* Reducimos el tamaño de la fuente del título */
     h1 {
         font-size: 2em; 
         margin-bottom: 10px;
     }
 
-    /* Reducimos el tamaño de la fuente en los párrafos */
     .contenido-mensaje p {
         font-size: 1em;
         margin-bottom: 10px;
     }
 
-    /* Ajuste de márgenes del corazón */
     .corazon-animado {
-        margin: 20px auto 10px auto; 
+        margin: 20px auto 10px auto; /* Margen ajustado para móvil */
     }
     
-    /* Ajuste de la firma */
     .firma {
         font-size: 1.1em;
         margin-top: 20px !important;
     }
     
-    /* Ajuste del reverso */
     .reverso-contenido h2 {
         font-size: 1.6em;
     }
