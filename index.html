@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Jesu</title>
+    <title>Para Mi Amor</title>
     <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="main.css"> 
 </head>
 <body>
 
-    <div class="tarjeta-contenedor">
+    <div id="bloqueador" class="bloqueador-pantalla">
+        <h2>Ingresa la Clave Secreta</h2>
+        <input type="password" id="claveInput" placeholder="Introduce la clave">
+        <button id="claveBoton">Abrir Tarjeta</button>
+        <p id="mensajeError">Clave incorrecta. ¡Inténtalo de nuevo!</p>
+    </div>
+
+    <div id="tarjetaContenido" class="tarjeta-contenedor oculto">
         <div class="tarjeta volteable" onclick="this.classList.toggle('girar')">
 
             <div class="frente">
@@ -34,19 +41,56 @@
     </div>
 
     <script>
+        // --- CONFIGURACIÓN DE LA CLAVE ---
+        const CLAVE_SECRETA = "8888"; // ¡Cámbiala a lo que necesites!
+        // ---------------------------------
+        
+        const bloqueador = document.getElementById('bloqueador');
+        const tarjetaContenido = document.getElementById('tarjetaContenido');
+        const claveInput = document.getElementById('claveInput');
+        const claveBoton = document.getElementById('claveBoton');
+        const mensajeError = document.getElementById('mensajeError');
+
+        function verificarClave() {
+            if (claveInput.value.toLowerCase() === CLAVE_SECRETA) {
+                // Clave correcta: ocultar bloqueador y mostrar tarjeta
+                bloqueador.style.display = 'none';
+                tarjetaContenido.classList.remove('oculto');
+                // Quitar la clase 'oculto' del body para reactivar los destellos de fondo
+                document.body.classList.remove('oculto'); 
+
+            } else {
+                // Clave incorrecta: mostrar mensaje de error
+                mensajeError.style.opacity = 1;
+                claveInput.value = ''; // Limpiar el input
+                claveInput.focus(); // Enfocar para reintentar
+                setTimeout(() => { mensajeError.style.opacity = 0; }, 2000);
+            }
+        }
+
+        // Eventos para el botón y la tecla Enter
+        claveBoton.addEventListener('click', verificarClave);
+        claveInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                verificarClave();
+            }
+        });
+
+        // ----------------------------------------------------
+        // Lógica del Besito (solo se activa después de la clave)
+        // ----------------------------------------------------
         document.addEventListener('dblclick', function(e) {
-            // 1. Crear el elemento div que representará el beso
+            // Solo activar los besitos si la tarjeta es visible
+            if (tarjetaContenido.classList.contains('oculto')) {
+                return; 
+            }
+            
             var besito = document.createElement('div');
             besito.classList.add('besito');
-
-            // 2. Posicionar el elemento donde ocurrió el doble clic
             besito.style.left = (e.clientX - 10) + 'px';
             besito.style.top = (e.clientY - 10) + 'px';
-
-            // 3. Añadir el beso al cuerpo del documento (visible en la pantalla)
             document.body.appendChild(besito);
 
-            // 4. Eliminar el beso después de que la animación termine (1000ms o 1 segundo)
             setTimeout(function() {
                 besito.remove();
             }, 1000); 
