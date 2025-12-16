@@ -9,7 +9,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    overflow: hidden; 
+    overflow-x: hidden; /* Evita el scroll horizontal en móviles */
 }
 
 /* -------------------------------------- */
@@ -45,7 +45,7 @@ body::before {
 }
 
 /* -------------------------------------- */
-/* 2. DISEÑO DE LA TARJETA Y VOLTEO 3D */
+/* 2. DISEÑO DE LA TARJETA Y VOLTEO 3D (ESCRITORIO) */
 /* -------------------------------------- */
 .tarjeta-contenedor {
     perspective: 1000px; 
@@ -54,9 +54,7 @@ body::before {
 /* Contenedor principal de la tarjeta volteable */
 .tarjeta {
     width: 350px;
-    /* CAMBIO CLAVE 1: Mantenemos min-height pero le damos un alto inicial más grande para el reverso */
     min-height: 500px; 
-    
     background-color: transparent; 
     border-radius: 20px;
     box-shadow: none; 
@@ -78,9 +76,7 @@ body::before {
 .frente, .reverso {
     position: absolute;
     width: 100%;
-    /* CAMBIO CLAVE 2: Usamos min-height para que la cara se expanda si el contenido es demasiado largo */
     min-height: 100%; 
-    
     backface-visibility: hidden; 
     background-color: white; 
     border-radius: 20px;
@@ -107,7 +103,6 @@ body::before {
     height: 60px;
     background-color: #8B0000; 
     position: relative;
-    /* CAMBIO CLAVE 3: Aumentamos el margen superior para separarlo del título */
     margin: 30px auto 10px auto; 
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; 
@@ -174,4 +169,52 @@ h1 {
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #8B0000, rgba(0, 0, 0, 0));
     margin: 15px 0;
+}
+
+
+/* ====================================== */
+/* 5. DISEÑO RESPONSIVO (PARA MÓVILES) */
+/* ====================================== */
+@media (max-width: 450px) {
+    
+    /* Adaptar el contenedor principal de la tarjeta al ancho de la pantalla */
+    .tarjeta {
+        width: 90vw; /* Usa el 90% del ancho del viewport */
+        min-height: 400px; /* Reducimos un poco la altura mínima */
+        padding: 0; /* Aseguramos que el padding se maneja en las caras */
+    }
+    
+    /* Aseguramos que las caras se ajusten correctamente */
+    .frente, .reverso {
+        padding: 20px; /* Reducimos el padding en pantallas pequeñas */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Reducimos el tamaño de la fuente del título */
+    h1 {
+        font-size: 2em; 
+        margin-bottom: 10px;
+    }
+
+    /* Reducimos el tamaño de la fuente en los párrafos */
+    .contenido-mensaje p {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    /* Ajuste de márgenes del corazón */
+    .corazon-animado {
+        margin: 20px auto 10px auto; 
+    }
+    
+    /* Ajuste de la firma */
+    .firma {
+        font-size: 1.1em;
+        margin-top: 20px !important;
+    }
+    
+    /* Ajuste del reverso */
+    .reverso-contenido h2 {
+        font-size: 1.6em;
+    }
 }
