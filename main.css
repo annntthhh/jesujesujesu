@@ -18,7 +18,7 @@ body {
 }
 
 /* -------------------------------------- */
-/* 1B. ESTILO DE LA PANTALLA DE CLAVE (NUEVO) */
+/* 1B. ESTILO DE LA PANTALLA DE CLAVE */
 /* -------------------------------------- */
 .bloqueador-pantalla {
     position: fixed;
@@ -34,7 +34,7 @@ body {
     color: white;
     z-index: 2000; 
     text-align: center;
-    transition: opacity 0.5s ease-out; /* Para la transición al abrir */
+    transition: opacity 0.5s ease-out; 
 }
 
 .bloqueador-pantalla h2 {
@@ -338,7 +338,7 @@ h1 {
 /* -------------------------------------- */
 
 .corazon-flotante {
-    position: absolute;
+    position: fixed; /* Crucial para la animación desde los bordes */
     width: 25px; 
     height: 25px;
     background-color: #8B0000; 
@@ -370,23 +370,15 @@ h1 {
 /* Animación de flotación (para corazones que vienen de ABAJO) */
 @keyframes flotar-arriba {
     0% { transform: translateY(0) rotate(-45deg) scale(0.6); opacity: 0; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-100vh) rotate(-45deg) scale(1); opacity: 0; }
+    30% { opacity: 0.8; }
+    70% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) rotate(-45deg) scale(1.2); opacity: 0; }
 }
 
 /* Animación de flotación (para corazones que vienen de ARRIBA) */
 @keyframes flotar-abajo {
     0% { transform: translateY(0) rotate(-45deg) scale(0.6); opacity: 0; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(100vh) rotate(-45deg) scale(1); opacity: 0; }
-}
-
-/* Animación de explosión (para cuando llegan al centro) */
-@keyframes explotar {
-    0% { transform: scale(1) rotate(-45deg); opacity: 1; }
-    100% { transform: scale(2.5) rotate(-45deg); opacity: 0; }
-}
-
-.corazon-flotante.explotando {
-    animation: explotar 0.5s ease-out forwards;
+    30% { opacity: 0.8; }
+    70% { opacity: 0.5; }
+    100% { transform: translateY(100vh) rotate(-45deg) scale(1.2); opacity: 0; }
 }
