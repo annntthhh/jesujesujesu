@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Jesu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="main.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="main.css"> 
 </head>
 <body>
 
-    <div class="tarjeta-contenedor">
-        <div class="tarjeta">
-            <h1>Para el amor de mi vida</h1> 
+    <div class="tarjeta-contenedor">
+        <div class="tarjeta volteable" onclick="this.classList.toggle('girar')">
 
-            <div class="corazon-animado"></div>
+            <div class="frente">
+                <h1>Para el amor de mi vida</h1> 
 
-            <div class="contenido-mensaje">
-                <p>Este es un espacio especial solo para ti.</p>
-                <p>Te envío todo mi amor y cariño en esta pequeña tarjeta.</p>
-                <p class="firma">- Siempre tuya</p>
-            </div>
-        </div>
-    </div>
+                <div class="corazon-animado"></div>
 
-</body>
+                <div class="contenido-mensaje">
+                    <p>Este es un espacio especial solo para ti.</p>
+                    <p>Te envío todo mi amor y cariño en esta pequeña tarjeta.</p>
+                    <p class="firma">- Siempre tuya</p>
+                </div>
+            </div>
+            <div class="reverso">
+                <div class="contenido-mensaje reverso-contenido">
+                    <h2>¡Una sorpresa solo para ti!</h2>
+                    <hr>
+                    <p>Sabes que eres lo más importante para mí. Cada día a tu lado es un regalo, y aunque esta tarjeta sea pequeña, la hice con todo el amor y la dedicación que mereces. Espero que te haya gustado este detalle. ¡Te amo!</p>
+                </div>
+            </div>
+            </div>
+    </div>
+    </body>
 </html>
