@@ -52,7 +52,6 @@
         const mensajeError = document.getElementById('mensajeError');
         
         let intervaloCorazones;
-        let intervaloBesitos; 
 
         // --- FUNCIÓN DE VERIFICACIÓN DE CLAVE ---
         function verificarClave() {
@@ -60,18 +59,11 @@
                 // Clave correcta: ocultar bloqueador y mostrar tarjeta
                 bloqueador.style.opacity = 0;
                 
-                // 1. DETENER LA CREACIÓN DE NUEVOS CORAZONES Y BESITOS
-                clearInterval(intervaloCorazones);
-                clearInterval(intervaloBesitos); 
+                // DETENER LA CREACIÓN DE NUEVOS CORAZONES. 
+                // Los existentes flotarán un ratito y luego se eliminarán solos.
+                clearInterval(intervaloCorazones); 
 
-                // 2. ELIMINAR LOS CORAZONES Y BESITOS EXISTENTES (LIMPIEZA)
-                document.querySelectorAll('.corazon-flotante, .besito-flotante').forEach(elemento => {
-                    elemento.style.transition = 'opacity 0.5s';
-                    elemento.style.opacity = 0;
-                    setTimeout(() => elemento.remove(), 500);
-                });
-
-                // 3. Esperar a que la transición de opacidad termine antes de ocultar
+                // Esperar a que la transición de opacidad termine antes de ocultar
                 setTimeout(() => { 
                     bloqueador.style.display = 'none';
                     tarjetaContenido.classList.remove('oculto');
@@ -95,67 +87,53 @@
         });
 
         // ----------------------------------------------------
-        // LÓGICA DE CORAZONES Y BESITOS FLOTANTES EN PANTALLA DE CLAVE 
+        // LÓGICA DE CORAZONES FLOTANTES EN PANTALLA DE CLAVE 
         // ----------------------------------------------------
         
-        // Función general para crear cualquier elemento flotante
-        function crearElementoFlotante(clase, animacion) {
-            if (bloqueador.style.display === 'none' || bloqueador.style.opacity === '0') {
-                return;
-            }
-            
-            const elemento = document.createElement('div');
-            elemento.classList.add(clase);
+        function crearCorazon(origen) {
+            const corazon = document.createElement('div');
+            corazon.classList.add('corazon-flotante');
             
             const anchoPantalla = window.innerWidth;
-            
-            // Ajustar el rango de aparición para centrar la animación
-            const rangoX = (clase === 'corazon-flotante') ? (anchoPantalla * 0.5) : (anchoPantalla * 0.7);
+            const rangoX = anchoPantalla * 0.5;
             const inicioX = (anchoPantalla - rangoX) / 2;
             const posicionX = Math.random() * rangoX + inicioX; 
 
-            elemento.style.left = posicionX + 'px';
+            corazon.style.left = posicionX + 'px';
             
             let duracion = Math.random() * 5 + 5; 
-            const origen = (Math.random() < 0.5) ? 'arriba' : 'abajo';
 
             if (origen === 'arriba') {
-                elemento.style.top = '-50px';
-                // Animación de flotación hacia abajo
-                elemento.style.animation = `${animacion === 'tenue' ? 'flotar-tenue' : 'flotar-abajo'} ${duracion}s linear forwards`;
+                corazon.style.top = '-50px';
+                corazon.style.animation = `flotar-abajo ${duracion}s linear forwards`;
             } else { // 'abajo'
-                elemento.style.bottom = '-50px';
-                // Animación de flotación hacia arriba
-                elemento.style.animation = `${animacion === 'tenue' ? 'flotar-tenue' : 'flotar-arriba'} ${duracion}s linear forwards`;
+                corazon.style.bottom = '-50px';
+                corazon.style.animation = `flotar-arriba ${duracion}s linear forwards`;
             }
             
-            document.body.appendChild(elemento);
+            document.body.appendChild(corazon);
 
-            // Eliminar el elemento una vez que su animación termina
+            // Eliminar el corazón después de su animación (+ 500ms de seguridad)
             setTimeout(() => {
-                elemento.remove();
+                corazon.remove();
             }, duracion * 1000 + 500);
         }
 
-        // Lanzar un corazón normal (Animación 'normal')
+        // Lanzar un corazón de forma aleatoria (arriba o abajo)
         function lanzarCorazon() {
-            crearElementoFlotante('corazon-flotante', 'normal');
-        }
-        
-        // Lanzar un besito (Animación 'tenue')
-        function lanzarBesitoTenue() {
-            crearElementoFlotante('besito-flotante', 'tenue');
+            if (Math.random() < 0.5) {
+                crearCorazon('arriba');
+            } else {
+                crearCorazon('abajo');
+            }
         }
 
         // Iniciar el lanzamiento de corazones cada 500ms
         intervaloCorazones = setInterval(lanzarCorazon, 500);
-        
-        // Iniciar el lanzamiento de besitos cada 1000ms (Más lento)
-        intervaloBesitos = setInterval(lanzarBesitoTenue, 1000);
 
 
         // ----------------------------------------------------
-        // Lógica del Besito (DOBLE CLIC)
+        // Lógica del Besito (DOBLE CLIC) - SOLO EN TARJETA REVELADA
         // ----------------------------------------------------
         document.addEventListener('dblclick', function(e) {
             // Solo activar los besitos si la tarjeta es visible
