@@ -70,7 +70,7 @@ body::before {
 
 .tarjeta {
     width: 350px;
-    height: 450px;
+    height: auto; /* AHORA LA ALTURA ES AUTOMÁTICA */
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.05); 
@@ -94,7 +94,6 @@ body::before {
     height: 60px;
     background-color: #8B0000; 
     position: relative;
-    /* Espaciado corregido */
     margin: 15px auto 10px auto; 
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; 
@@ -124,14 +123,12 @@ h1 {
     font-size: 1.8em;
     color: #222; 
     margin-bottom: 15px;
-    /* CAMBIO CLAVE: Aplicar fuente Sacramento SÓLO al título */
     font-family: 'Sacramento', cursive; 
-    font-size: 2.5em; /* Aumentamos el tamaño para que se vea bien la cursiva */
+    font-size: 2.5em; 
 }
 
 .contenido-mensaje p {
     color: #333; 
-    /* REVERTIDO: Dejar la fuente 'Arial' */
     font-family: 'Arial', sans-serif; 
     font-size: 1.1em; 
     line-height: 1.6;
@@ -141,7 +138,6 @@ h1 {
 
 .firma {
     color: #7C0A02; 
-    /* REVERTIDO: Dejar la fuente 'Arial' */
     font-family: 'Arial', sans-serif;
     font-style: italic;
     font-weight: bold;
