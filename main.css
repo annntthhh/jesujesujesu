@@ -53,7 +53,7 @@ body::before {
 
 /* Contenedor principal de la tarjeta volteable */
 .tarjeta {
-    width: 350px; /* Ancho estándar para escritorio */
+    width: 350px; 
     min-height: 500px; 
     background-color: transparent; 
     border-radius: 20px;
@@ -103,7 +103,6 @@ body::before {
     height: 60px;
     background-color: #8B0000; 
     position: relative;
-    /* Margen ajustado para escritorio */
     margin: 30px auto 10px auto; 
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; 
@@ -179,7 +178,6 @@ h1 {
 @media (max-width: 450px) {
     
     .tarjeta {
-        /* Ancho final ajustado para móvil (80% con límite de 320px) */
         width: 80vw; 
         max-width: 320px; 
         min-height: 400px; 
@@ -187,7 +185,7 @@ h1 {
     }
     
     .frente, .reverso {
-        padding: 20px; /* Reducción de padding en móvil */
+        padding: 20px; 
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
@@ -202,7 +200,7 @@ h1 {
     }
 
     .corazon-animado {
-        margin: 20px auto 10px auto; /* Margen ajustado para móvil */
+        margin: 20px auto 10px auto; 
     }
     
     .firma {
@@ -212,5 +210,53 @@ h1 {
     
     .reverso-contenido h2 {
         font-size: 1.6em;
+    }
+}
+
+/* -------------------------------------- */
+/* 6. ESTILO PARA EL BESO ANIMADO (NUEVO) */
+/* -------------------------------------- */
+.besito {
+    position: absolute;
+    width: 20px; 
+    height: 20px;
+    background-color: #8B0000; 
+    transform: rotate(-45deg);
+    pointer-events: none; 
+    opacity: 0;
+    animation: aparecer-desvanecer 1s forwards; 
+    z-index: 1000; 
+}
+
+.besito::before,
+.besito::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #8B0000;
+    border-radius: 50%;
+    position: absolute;
+}
+.besito::before {
+    left: -10px;
+    top: 0;
+}
+.besito::after {
+    top: -10px;
+    left: 0;
+}
+
+@keyframes aparecer-desvanecer {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(0.5);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -100px) rotate(-45deg) scale(0.8); 
     }
 }
