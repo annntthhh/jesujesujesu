@@ -80,7 +80,7 @@ body {
 
 
 /* -------------------------------------- */
-/* EFECTO DE DESTELLOS/PARTÍCULAS */
+/* EFECTO DE DESTELLOS/PARTÍCULAS MÁGICAS (BRILLO DE FONDO) */
 /* -------------------------------------- */
 @keyframes parpadeo-lento {
     0% { opacity: 0.3; box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
@@ -95,6 +95,7 @@ body::before {
     left: 0;
     width: 100%; 
     height: 100%;
+    /* Partículas blancas que simulan brillo/magia */
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 1.5px, transparent 1px),
                 radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.5px, transparent 1px),
                 radial-gradient(circle, rgba(255, 255, 255, 0.7) 1.5px, transparent 1px);
@@ -381,45 +382,4 @@ h1 {
     30% { opacity: 0.8; }
     70% { opacity: 0.5; }
     100% { transform: translateY(100vh) rotate(-45deg) scale(1.2); opacity: 0; }
-}
-
-/* -------------------------------------- */
-/* 8. ESTILOS DE BESITOS FLOTANTES (PANTALLA CLAVE) */
-/* -------------------------------------- */
-
-.besito-flotante {
-    position: fixed; /* Posicionamiento fijo respecto al viewport */
-    width: 25px; 
-    height: 25px;
-    background-color: #8B0000; 
-    transform: rotate(-45deg);
-    pointer-events: none; 
-    opacity: 0;
-    z-index: 1999; 
-}
-
-/* Las dos partes circulares del besito/corazón flotante */
-.besito-flotante::before,
-.besito-flotante::after {
-    content: "";
-    width: 25px;
-    height: 25px;
-    background-color: #8B0000;
-    border-radius: 50%;
-    position: absolute;
-}
-.besito-flotante::before {
-    left: -12.5px;
-    top: 0;
-}
-.besito-flotante::after {
-    top: -12.5px;
-    left: 0;
-}
-
-/* Animación de flotación MUY TENUE y lenta */
-@keyframes flotar-tenue {
-    0% { transform: translateY(0) rotate(-45deg) scale(0.3); opacity: 0; }
-    50% { opacity: 0.2; } /* MUY TENUE */
-    100% { transform: translateY(-100vh) rotate(-45deg) scale(0.8); opacity: 0; }
 }
