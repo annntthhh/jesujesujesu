@@ -11,7 +11,7 @@ body {
 .escena-peanuts {
     width: 100vw;
     height: 100vh;
-    border: 8px solid black; /* Borde grueso alrededor de toda la escena */
+    border: 8px solid black; 
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -39,16 +39,15 @@ body {
 /* -------------------------------------- */
 .ilustracion-central {
     position: absolute;
-    width: 450px; /* Tamaño fijo para que se vea bien en el centro */
+    width: 450px; /* Tamaño de la imagen para que quepa bien en el diseño */
     height: auto;
     
-    /* Posicionamiento en el centro-izquierda del césped */
+    /* Posicionamiento en la izquierda, sobre el césped */
     top: 50%;
     left: 20%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%); /* Centrado horizontal de la imagen */
     
     z-index: 10;
-    /* Quitamos el borde negro si la imagen ya lo tiene */
     border: none;
     box-shadow: none; 
 }
@@ -61,8 +60,9 @@ body {
     border: 4px solid black;
     padding: 15px;
     line-height: 1.4;
-    box-shadow: 4px 4px 0 black;
+    box-shadow: 4px 4px 0 black; /* Sombra estilo cómic */
     z-index: 20;
+    color: black;
 }
 
 .mensaje-principal {
@@ -70,12 +70,12 @@ body {
     width: 250px;
     top: 40%;
     left: 48%;
-    transform: rotate(3deg); /* Inclinación */
+    transform: rotate(3deg); /* Inclinación ligera */
 }
 
 .razones-secundario {
     background-color: #fffacd; /* Amarillo pálido/crema */
-    width: 200px;
+    width: 220px;
     top: 30%;
     left: 75%;
     transform: rotate(-5deg); /* Inclinación opuesta */
