@@ -2,8 +2,8 @@
 /* 1. ESTILOS GLOBALES Y ANIMACIÓN DEL CORAZÓN */
 /* -------------------------------------- */
 body {
-    /* CAMBIO 1: Fondo rosa intermedio (más cálido, no tan pálido) */
-    background: linear-gradient(135deg, #f78da7 0%, #f3567a 100%); 
+    /* CAMBIO 1: Fondo rosa más sutil (bajamos el tono del rosa intermedio) */
+    background: linear-gradient(135deg, #f9a4b8 0%, #f57795 100%); 
     
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -18,16 +18,20 @@ body {
 /* EFECTO DE DESTELLOS/PARTÍCULAS */
 /* -------------------------------------- */
 
-/* Define la animación para el brillo con más intensidad */
-@keyframes brillo-estelar {
-    0%, 100% { 
-        opacity: 0.8; 
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Sombra para simular resplandor sutil */
+/* Define la animación para el parpadeo lento y el brillo intenso */
+@keyframes parpadeo-lento {
+    0% { 
+        opacity: 0.3; /* Menor opacidad al inicio */
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
     }
     50% { 
-        opacity: 1; 
-        text-shadow: 0 0 10px rgba(255, 255, 255, 1); /* Sombra más fuerte para el punto máximo de brillo */
+        opacity: 1; /* Brillo máximo */
+        box-shadow: 0 0 15px rgba(255, 255, 255, 1); /* Mucho más resplandor */
     } 
+    100% { 
+        opacity: 0.3; /* Vuelve a la baja opacidad */
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
+    }
 }
 
 /* Usa un fondo animado de múltiples gradientes radiales pequeños (destellos) */
@@ -41,15 +45,15 @@ body::before {
     
     /* Aumentamos la opacidad de los destellos y la densidad */
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 1.5px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.8) 1.5px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.6) 1.5px, transparent 1px);
+                radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.5px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.7) 1.5px, transparent 1px);
     
     /* Distribuye los destellos en patrones fijos */
     background-size: 50px 50px, 80px 80px, 120px 120px;
     background-color: transparent;
     
-    /* Aplicamos la animación de brillo estelar */
-    animation: brillo-estelar 3s infinite alternate; 
+    /* CAMBIO 2: Parpadeo muy lento (duración de 6s) y sin 'alternate' */
+    animation: parpadeo-lento 6s infinite; 
     z-index: -1; 
 }
 
