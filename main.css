@@ -2,8 +2,9 @@
 /* 1. ESTILOS GLOBALES Y ANIMACIÓN DEL CORAZÓN */
 /* -------------------------------------- */
 body {
-    /* CAMBIO AQUÍ: Gradiente lineal suave de blanco a rosa pastel */
-    background: linear-gradient(135deg, #ffffff 0%, #fdeff2 100%); 
+    /* CAMBIO 1: Fondo rosa fuerte y vibrante */
+    background-color: #f7387d;
+    background-image: linear-gradient(135deg, #ff69b4 0%, #f7387d 100%); 
     
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -11,6 +12,47 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    overflow: hidden; /* Importante para que los destellos no generen scroll */
+}
+
+/* -------------------------------------- */
+/* EFECTO DE DESTELLOS/ESTRELLAS */
+/* -------------------------------------- */
+
+/* Define la animación para el movimiento de los destellos */
+@keyframes destellos-animacion {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-2000px); } /* Desplazamiento hacia arriba */
+}
+
+/* Crear el contenedor de destellos usando el pseudo-elemento ::before del body */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: 
+        /* Genera cientos de puntos aleatorios para simular los destellos */
+        /* Nota: Esto es una lista muy larga, solo muestro un extracto */
+        1200px 700px #fff, 
+        180px 200px #fff, 
+        300px 900px #fff, 
+        500px 600px #fff,
+        /* ... y muchos más puntos aquí ... */
+        1000px 1800px #fff; 
+        
+    /* Repite el patrón de sombra muchas veces para llenar la pantalla */
+    box-shadow: 
+        /* Generación masiva de destellos (ejemplo simplificado) */
+        100px 0px #fff, 200px 100px #fff, 300px 50px #fff, 400px 200px #fff,
+        100px 500px #fff, 200px 600px #fff, 300px 550px #fff, 400px 700px #fff,
+        100px 1000px #fff, 200px 1100px #fff, 300px 1050px #fff, 400px 1200px #fff;
+    
+    /* Aplica la animación */
+    animation: destellos-animacion 50s linear infinite;
 }
 
 /* Animación de latido del corazón */
@@ -22,6 +64,7 @@ body {
 
 /* -------------------------------------- */
 /* 2. DISEÑO DE LA TARJETA CENTRAL */
+/* (El código de la tarjeta permanece igual) */
 /* -------------------------------------- */
 .tarjeta-contenedor {
     perspective: 1000px;
@@ -30,12 +73,14 @@ body {
 .tarjeta {
     width: 350px;
     height: 450px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95); /* Opacidad suave */
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.05); /* Sombra elegante */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.05);
     padding: 30px;
     text-align: center;
     transition: transform 0.5s;
+    z-index: 10; /* Asegura que la tarjeta esté encima de los destellos */
+    position: relative; /* Necesario para z-index */
 }
 
 /* Efecto al pasar el mouse (para que se sienta interactiva) */
@@ -56,7 +101,6 @@ body {
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; /* Aplica la animación */
 }
-/* Creación de la forma del corazón con pseudo-elementos */
 .corazon-animado::before,
 .corazon-animado::after {
     content: "";
