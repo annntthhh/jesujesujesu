@@ -9,8 +9,74 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    overflow-x: hidden; /* Evita el scroll horizontal en móviles */
+    overflow-x: hidden; 
 }
+
+/* NUEVO: Clase para ocultar elementos inicialmente */
+.oculto {
+    display: none !important;
+}
+
+/* -------------------------------------- */
+/* 1B. ESTILO DE LA PANTALLA DE CLAVE (NUEVO) */
+/* -------------------------------------- */
+.bloqueador-pantalla {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f9a4b8 0%, #f57795 100%); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 2000; /* Asegura que esté encima de todo */
+    text-align: center;
+}
+
+.bloqueador-pantalla h2 {
+    font-family: 'Sacramento', cursive;
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #8B0000;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#claveInput {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#claveBoton {
+    padding: 10px 25px;
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#claveBoton:hover {
+    background-color: #7C0A02;
+}
+
+#mensajeError {
+    color: #FFD700;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
 
 /* -------------------------------------- */
 /* EFECTO DE DESTELLOS/PARTÍCULAS */
@@ -211,10 +277,15 @@ h1 {
     .reverso-contenido h2 {
         font-size: 1.6em;
     }
+    
+    /* Adaptar pantalla de clave a móvil */
+    .bloqueador-pantalla h2 {
+        font-size: 2.5em;
+    }
 }
 
 /* -------------------------------------- */
-/* 6. ESTILO PARA EL BESO ANIMADO (NUEVO) */
+/* 6. ESTILO PARA EL BESO ANIMADO */
 /* -------------------------------------- */
 .besito {
     position: absolute;
