@@ -1,0 +1,153 @@
+/* -------------------------------------- */
+/* ESTILO GLOBAL PEANUTS (Colores, Borde) */
+/* -------------------------------------- */
+body {
+    background-color: #f0f0f0; /* Fondo general gris muy claro */
+    font-family: Arial, Helvetica, sans-serif; /* Usamos una fuente simple como en el cómic */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Oculta el scroll si la escena es más grande que la ventana */
+}
+
+/* El Contenedor de la escena (Todo con un borde grueso) */
+.escena-peanuts {
+    width: 100vw;
+    height: 100vh;
+    border: 8px solid black; /* Borde grueso estilo panel de cómic */
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* -------------------------------------- */
+/* FONDO: CIELO Y CÉSPED (COLORES PLANOS) */
+/* -------------------------------------- */
+.cielo {
+    background-color: #add8e6; /* Azul claro estilo Peanuts */
+    height: 65%; /* 65% de la pantalla es cielo */
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.cesped {
+    background-color: #8fbc8f; /* Verde oliva/bosque estilo Peanuts */
+    height: 35%; /* 35% de la pantalla es césped */
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+/* -------------------------------------- */
+/* LA CASITA DE SNOOPY */
+/* -------------------------------------- */
+.casita-contenedor {
+    position: absolute;
+    bottom: 25%; /* Ubicada sobre el césped */
+    left: 10%; /* Posicionada a la izquierda */
+    width: 250px;
+    height: 180px;
+    z-index: 10;
+}
+
+.techo {
+    background-color: #ff4500; /* Rojo brillante */
+    height: 40px;
+    width: 100%;
+    border: 5px solid black;
+    border-bottom: none;
+    box-sizing: border-box;
+    transform: skewX(-20deg); /* Inclinación característica */
+    position: absolute;
+    top: -20px;
+    left: 10px;
+}
+
+.cuerpo {
+    background-color: white;
+    height: 150px;
+    width: 100%;
+    border: 5px solid black;
+    border-top: none;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.puerta {
+    background-color: black;
+    width: 40px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+
+/* -------------------------------------- */
+/* BOCADILLO DE MENSAJE */
+/* -------------------------------------- */
+.bocadillo {
+    background-color: white;
+    border: 4px solid black;
+    padding: 15px;
+    width: 280px;
+    position: absolute;
+    top: -100px; /* Posicionamiento arriba de la casa */
+    left: 280px;
+    transform: rotate(2deg); /* Un poco inclinado, como si estuviera dibujado */
+    box-shadow: 4px 4px 0 black; /* Sombra que simula el cómic */
+}
+
+.bocadillo h2, .bocadillo p {
+    margin: 5px 0;
+    line-height: 1.4;
+    color: black;
+}
+
+.bocadillo h2 {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+    font-size: 1.5em;
+}
+
+.firma {
+    font-style: italic;
+    text-align: right;
+    margin-top: 10px !important;
+}
+
+/* -------------------------------------- */
+/* ELEMENTO DE MENSAJE EXTRA (Como un panel) */
+/* -------------------------------------- */
+.charlie-brown {
+    position: absolute;
+    right: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fffacd; /* Amarillo pálido/crema */
+    border: 4px solid black;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 4px 4px 0 black;
+    transform: rotate(-3deg);
+    z-index: 10;
+}
+
+.charlie-brown h3 {
+    border-bottom: 2px dashed black; /* Línea discontinua */
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 1.4em;
+    color: black;
+}
+
+.charlie-brown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.charlie-brown li {
+    margin: 8px 0;
+    line-height: 1.3;
+    color: #333;
+}
