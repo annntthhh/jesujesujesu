@@ -2,8 +2,8 @@
 /* 1. ESTILOS GLOBALES Y ANIMACIÓN DEL CORAZÓN */
 /* -------------------------------------- */
 body {
-    /* CAMBIO 1: Fondo rosa pastel y suave */
-    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); 
+    /* CAMBIO 1: Fondo rosa intermedio (más cálido, no tan pálido) */
+    background: linear-gradient(135deg, #f78da7 0%, #f3567a 100%); 
     
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -18,10 +18,16 @@ body {
 /* EFECTO DE DESTELLOS/PARTÍCULAS */
 /* -------------------------------------- */
 
-/* Eliminamos la animación de movimiento (animacion-particulas) */
-@keyframes brillo-sutil {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; } /* Hace que los destellos "brillen" sutilmente */
+/* Define la animación para el brillo con más intensidad */
+@keyframes brillo-estelar {
+    0%, 100% { 
+        opacity: 0.8; 
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Sombra para simular resplandor sutil */
+    }
+    50% { 
+        opacity: 1; 
+        text-shadow: 0 0 10px rgba(255, 255, 255, 1); /* Sombra más fuerte para el punto máximo de brillo */
+    } 
 }
 
 /* Usa un fondo animado de múltiples gradientes radiales pequeños (destellos) */
@@ -30,20 +36,20 @@ body::before {
     position: fixed; 
     top: 0;
     left: 0;
-    width: 100%; /* Ajustamos el tamaño a la vista para eliminar el scroll innecesario */
+    width: 100%; 
     height: 100%;
     
-    /* Crea la ilusión de destellos con puntos blancos */
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+    /* Aumentamos la opacidad de los destellos y la densidad */
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 1.5px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.8) 1.5px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.6) 1.5px, transparent 1px);
     
     /* Distribuye los destellos en patrones fijos */
     background-size: 50px 50px, 80px 80px, 120px 120px;
     background-color: transparent;
     
-    /* Aplicamos la animación de brillo, no de movimiento */
-    animation: brillo-sutil 4s infinite alternate; /* Alterna entre 0.7 y 1 de opacidad */
+    /* Aplicamos la animación de brillo estelar */
+    animation: brillo-estelar 3s infinite alternate; 
     z-index: -1; 
 }
 
@@ -57,6 +63,7 @@ body::before {
 
 /* -------------------------------------- */
 /* 2. DISEÑO DE LA TARJETA CENTRAL */
+/* (El resto del código permanece igual) */
 /* -------------------------------------- */
 .tarjeta-contenedor {
     perspective: 1000px;
@@ -75,15 +82,11 @@ body::before {
     position: relative;
 }
 
-/* Efecto al pasar el mouse (para que se sienta interactiva) */
 .tarjeta:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* -------------------------------------- */
-/* 3. ELEMENTO PRINCIPAL: EL CORAZÓN */
-/* -------------------------------------- */
 .corazon-animado {
     width: 60px;
     height: 60px;
@@ -93,7 +96,6 @@ body::before {
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; 
 }
-/* Creación de la forma del corazón con pseudo-elementos */
 .corazon-animado::before,
 .corazon-animado::after {
     content: "";
@@ -112,9 +114,6 @@ body::before {
     left: 0;
 }
 
-/* -------------------------------------- */
-/* 4. ESTILOS DE TEXTO */
-/* -------------------------------------- */
 h1 {
     font-size: 1.8em;
     color: #444;
