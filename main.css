@@ -239,6 +239,17 @@ h1 {
     margin: 15px 0;
 }
 
+/* --- NUEVO ESTILO PARA EL MENSAJE FINAL --- */
+.reverso-contenido .te-amo-final {
+    color: #8B0000; /* Color rojo oscuro */
+    font-family: 'Arial', sans-serif; /* Fuente clara (no cursiva) */
+    font-weight: bold; /* Negrita para destacar */
+    font-size: 1.4em; /* Más grande que el texto normal */
+    margin-top: 20px; /* Separación de la frase anterior */
+    margin-bottom: 0;
+    text-align: center;
+}
+
 
 /* ====================================== */
 /* 5. DISEÑO RESPONSIVO (PARA MÓVILES) */
@@ -283,6 +294,11 @@ h1 {
     /* Adaptar pantalla de clave a móvil */
     .bloqueador-pantalla h2 {
         font-size: 2.5em;
+    }
+    
+    .reverso-contenido .te-amo-final {
+        font-size: 1.2em;
+        margin-top: 15px;
     }
 }
 
