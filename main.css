@@ -1,7 +1,8 @@
 /* -------------------------------------- */
-/* CONFIGURACIÓN BASE Y FONDO LIMPIO */
+/* CONFIGURACIÓN BASE Y FONDO */
 /* -------------------------------------- */
 body {
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -10,15 +11,13 @@ body {
 .escena-peanuts {
     width: 100vw;
     height: 100vh;
-    border: 8px solid black; 
+    border: 8px solid black; /* Borde grueso alrededor de toda la escena */
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
 }
 
-/* -------------------------------------- */
-/* FONDO: CIELO Y CÉSPED (El estilo que sí funciona) */
-/* -------------------------------------- */
+/* Fondo: Cielo y Césped (Colores planos) */
 .cielo {
     background-color: #add8e6; /* Azul claro */
     height: 70%;
@@ -36,19 +35,77 @@ body {
 }
 
 /* -------------------------------------- */
-/* POSICIONAMIENTO DE LA IMAGEN IDEAL */
+/* POSICIONAMIENTO DE LA IMAGEN DE SNOOPY */
 /* -------------------------------------- */
 .ilustracion-central {
     position: absolute;
-    width: 60%; /* La imagen ocupará el 60% del ancho de la pantalla */
+    width: 450px; /* Tamaño fijo para que se vea bien en el centro */
     height: auto;
     
-    /* CENTRADO PERFECTO en la escena */
+    /* Posicionamiento en el centro-izquierda del césped */
     top: 50%;
-    left: 50%;
+    left: 20%;
     transform: translate(-50%, -50%); 
     
-    /* Le añadimos el borde grueso para integrarla en el estilo cómic */
-    border: 5px solid black;
-    box-shadow: 5px 5px 0 black;
+    z-index: 10;
+    /* Quitamos el borde negro si la imagen ya lo tiene */
+    border: none;
+    box-shadow: none; 
+}
+
+/* -------------------------------------- */
+/* CUADROS DE MENSAJE (Estilo Inclinado) */
+/* -------------------------------------- */
+.cuadro-mensaje {
+    position: absolute;
+    border: 4px solid black;
+    padding: 15px;
+    line-height: 1.4;
+    box-shadow: 4px 4px 0 black;
+    z-index: 20;
+}
+
+.mensaje-principal {
+    background-color: white;
+    width: 250px;
+    top: 40%;
+    left: 48%;
+    transform: rotate(3deg); /* Inclinación */
+}
+
+.razones-secundario {
+    background-color: #fffacd; /* Amarillo pálido/crema */
+    width: 200px;
+    top: 30%;
+    left: 75%;
+    transform: rotate(-5deg); /* Inclinación opuesta */
+}
+
+.cuadro-mensaje h2, .cuadro-mensaje h3 {
+    margin: 5px 0 10px 0;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+    font-size: 1.4em;
+}
+
+.razones-secundario h3 {
+    border-bottom: 2px dashed black;
+}
+
+.cuadro-mensaje ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cuadro-mensaje li {
+    margin: 5px 0;
+    line-height: 1.2;
+}
+
+.firma {
+    font-style: italic;
+    text-align: right;
+    margin-top: 10px !important;
+    font-size: 0.9em;
 }
