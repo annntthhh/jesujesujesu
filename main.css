@@ -2,7 +2,9 @@
 /* 1. ESTILOS GLOBALES Y ANIMACIÓN DEL CORAZÓN */
 /* -------------------------------------- */
 body {
-    background-color: #f0f4f8; /* Color suave de fondo (Gris/Azul claro) */
+    /* CAMBIO AQUÍ: Gradiente lineal suave de blanco a rosa pastel */
+    background: linear-gradient(135deg, #ffffff 0%, #fdeff2 100%); 
+    
     font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
@@ -22,7 +24,7 @@ body {
 /* 2. DISEÑO DE LA TARJETA CENTRAL */
 /* -------------------------------------- */
 .tarjeta-contenedor {
-    perspective: 1000px; /* Para futuros efectos 3D, si quieres */
+    perspective: 1000px;
 }
 
 .tarjeta {
