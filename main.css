@@ -54,7 +54,9 @@ body::before {
 /* Contenedor principal de la tarjeta volteable */
 .tarjeta {
     width: 350px;
-    min-height: 450px; 
+    /* CAMBIO CLAVE 1: Mantenemos min-height pero le damos un alto inicial más grande para el reverso */
+    min-height: 500px; 
+    
     background-color: transparent; 
     border-radius: 20px;
     box-shadow: none; 
@@ -76,7 +78,9 @@ body::before {
 .frente, .reverso {
     position: absolute;
     width: 100%;
-    height: 100%; 
+    /* CAMBIO CLAVE 2: Usamos min-height para que la cara se expanda si el contenido es demasiado largo */
+    min-height: 100%; 
+    
     backface-visibility: hidden; 
     background-color: white; 
     border-radius: 20px;
@@ -84,15 +88,12 @@ body::before {
     padding: 30px;
     top: 0;
     left: 0;
-    
-    /* IMPORTANTE: Quitamos display: flex; de aquí para que el corazón vuelva a su sitio */
     box-sizing: border-box; 
 }
 
 /* La cara del reverso se inicia girada 180 grados */
 .reverso {
     transform: rotateY(180deg);
-    /* Aplicamos flex display SÓLO al reverso para centrar su contenido */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -106,8 +107,8 @@ body::before {
     height: 60px;
     background-color: #8B0000; 
     position: relative;
-    /* Los márgenes vuelven a funcionar correctamente */
-    margin: 15px auto 10px auto; 
+    /* CAMBIO CLAVE 3: Aumentamos el margen superior para separarlo del título */
+    margin: 30px auto 10px auto; 
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; 
 }
