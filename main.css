@@ -12,7 +12,7 @@ body {
     overflow-x: hidden; 
 }
 
-/* NUEVO: Clase para ocultar elementos inicialmente */
+/* Clase para ocultar elementos inicialmente */
 .oculto {
     display: none !important;
 }
@@ -286,7 +286,7 @@ h1 {
 }
 
 /* -------------------------------------- */
-/* 6. ESTILO PARA EL BESO ANIMADO */
+/* 6. ESTILO PARA EL BESO ANIMADO (Doble Clic) */
 /* -------------------------------------- */
 .besito {
     position: absolute;
@@ -338,7 +338,7 @@ h1 {
 /* -------------------------------------- */
 
 .corazon-flotante {
-    position: fixed; /* Crucial para la animación desde los bordes */
+    position: fixed; 
     width: 25px; 
     height: 25px;
     background-color: #8B0000; 
@@ -381,4 +381,45 @@ h1 {
     30% { opacity: 0.8; }
     70% { opacity: 0.5; }
     100% { transform: translateY(100vh) rotate(-45deg) scale(1.2); opacity: 0; }
+}
+
+/* -------------------------------------- */
+/* 8. ESTILOS DE BESITOS FLOTANTES (PANTALLA CLAVE) */
+/* -------------------------------------- */
+
+.besito-flotante {
+    position: fixed; /* Posicionamiento fijo respecto al viewport */
+    width: 25px; 
+    height: 25px;
+    background-color: #8B0000; 
+    transform: rotate(-45deg);
+    pointer-events: none; 
+    opacity: 0;
+    z-index: 1999; 
+}
+
+/* Las dos partes circulares del besito/corazón flotante */
+.besito-flotante::before,
+.besito-flotante::after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    background-color: #8B0000;
+    border-radius: 50%;
+    position: absolute;
+}
+.besito-flotante::before {
+    left: -12.5px;
+    top: 0;
+}
+.besito-flotante::after {
+    top: -12.5px;
+    left: 0;
+}
+
+/* Animación de flotación MUY TENUE y lenta */
+@keyframes flotar-tenue {
+    0% { transform: translateY(0) rotate(-45deg) scale(0.3); opacity: 0; }
+    50% { opacity: 0.2; } /* MUY TENUE */
+    100% { transform: translateY(-100vh) rotate(-45deg) scale(0.8); opacity: 0; }
 }
