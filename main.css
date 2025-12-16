@@ -15,7 +15,6 @@ body {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    background-color: white; /* Para asegurar que el borde se vea */
 }
 
 /* -------------------------------------- */
@@ -38,72 +37,33 @@ body {
 }
 
 /* -------------------------------------- */
-/* NUBES (Dibujadas con CSS: círculos unidos y bordes negros) */
-/* -------------------------------------- */
-.nube {
-    position: absolute;
-    background: transparent;
-    border: 3px solid black;
-    border-radius: 50%;
-    box-shadow: 0 0 0 5px white, 0 0 0 3px black; /* Simula un relleno blanco con borde negro */
-}
-
-/* Nube 1 */
-.nube-1 {
-    top: 15%; left: 5%;
-    width: 150px; height: 100px;
-    transform: scale(0.8);
-}
-.nube-1::before, .nube-1::after {
-    content: ''; background: white; border: 3px solid black; border-radius: 50%; position: absolute;
-}
-.nube-1::before { width: 80px; height: 60px; top: -30px; left: 10px; }
-.nube-1::after { width: 100px; height: 80px; top: -10px; right: -20px; }
-
-/* Nube 2 (Superior central) */
-.nube-2 {
-    top: 5%; left: 40%;
-    width: 120px; height: 80px;
-    transform: scale(1.1);
-}
-.nube-2::before { content: ''; background: white; border: 3px solid black; border-radius: 50%; position: absolute; width: 70px; height: 50px; top: -20px; right: 10px; }
-
-/* Nube 3 */
-.nube-3 {
-    top: 20%; right: 10%;
-    width: 180px; height: 110px;
-}
-.nube-3::before { content: ''; background: white; border: 3px solid black; border-radius: 50%; position: absolute; width: 90px; height: 70px; top: 0px; left: -20px; }
-
-/* -------------------------------------- */
-/* LA CASITA DE SNOOPY (CENTRADA Y DETALLADA) */
+/* LA CASITA (Centrada y con Estilo Fiel) */
 /* -------------------------------------- */
 .casita-contenedor {
     position: absolute;
-    bottom: 20%; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    width: 250px;
-    height: 180px;
+    bottom: 25%; 
+    left: 20%; /* Posicionada a la izquierda, como en la imagen */
+    width: 150px; /* Reducida para que parezca más pequeña */
+    height: 120px;
     z-index: 10;
 }
 
 .techo {
-    background-color: #d82e2e; /* Rojo de la casita */
-    height: 40px;
+    background-color: #ff4500; /* Rojo vibrante */
+    height: 30px;
     width: 100%;
     border: 4px solid black;
     border-bottom: none;
     box-sizing: border-box;
     transform: skewX(-20deg); 
     position: absolute;
-    top: -20px;
-    left: 10px;
+    top: -15px;
+    left: 8px; /* Desplazado ligeramente */
 }
 
 .cuerpo {
     background-color: white;
-    height: 150px;
+    height: 100px;
     width: 100%;
     border: 4px solid black;
     border-top: none;
@@ -113,121 +73,38 @@ body {
 
 .puerta {
     background-color: black;
-    width: 40px;
-    height: 60px;
+    width: 30px;
+    height: 45px;
     position: absolute;
     bottom: 0;
-    left: 15px;
-    border-top-right-radius: 5px; 
-}
-
-/* Pasto que cubre la base de la casa (simula el dibujo a mano) */
-.pasto-frente {
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: transparent;
-    border-top: 4px solid black;
-    /* Dibujo irregular del pasto con clip-path */
-    clip-path: polygon(0 100%, 10% 50%, 20% 80%, 30% 30%, 40% 90%, 50% 10%, 60% 70%, 70% 40%, 80% 95%, 90% 20%, 100% 100%);
+    left: 10px;
 }
 
 /* -------------------------------------- */
-/* SNOOPY Y BURBUJA (Representación Simplificada) */
-/* -------------------------------------- */
-.snoopy-zona {
-    position: absolute;
-    top: -60px; 
-    left: 30%;
-    z-index: 15;
-    transform: rotate(3deg);
-}
-
-/* Snoopy (Placeholder simple) */
-.snoopy {
-    width: 80px;
-    height: 60px;
-    background: white;
-    border: 4px solid black;
-    border-radius: 50%; /* Cabeza/Cuerpo simplificado */
-    position: relative;
-}
-.snoopy::after { /* Simula el oído */
-    content: '';
-    position: absolute;
-    width: 20px; height: 40px;
-    background: black;
-    border-radius: 0 50% 50% 0;
-    top: -10px; right: 0;
-    transform: rotate(10deg);
-}
-
-/* Burbuja de pensamiento */
-.burbuja {
-    position: absolute;
-    top: -80px;
-    left: 60px;
-    width: 80px; height: 50px;
-    background: white;
-    border: 4px solid black;
-    border-radius: 50%;
-    padding: 5px;
-    text-align: center;
-}
-
-.burbuja::before {
-    content: '';
-    position: absolute;
-    width: 10px; height: 10px;
-    background: white;
-    border: 4px solid black;
-    border-radius: 50%;
-    bottom: -10px; left: 10px;
-}
-.burbuja::after {
-    content: '';
-    position: absolute;
-    width: 5px; height: 5px;
-    background: white;
-    border: 4px solid black;
-    border-radius: 50%;
-    bottom: -20px; left: 5px;
-}
-
-.icono {
-    font-size: 1.2em;
-    position: absolute;
-}
-.corazon { top: 10px; left: 10px; }
-.nota { top: 20px; right: 10px; }
-
-/* -------------------------------------- */
-/* CUADROS DE MENSAJE (Bocadillos) */
+/* CUADROS DE MENSAJE (Bocadillos Inclinados) */
 /* -------------------------------------- */
 .cuadro-mensaje {
     position: absolute;
     border: 4px solid black;
     padding: 15px;
     line-height: 1.4;
-    box-shadow: 4px 4px 0 black;
+    box-shadow: 4px 4px 0 black; /* Sombra estilo cómic */
     z-index: 20;
 }
 
 .mensaje-principal {
     background-color: white;
-    width: 220px;
+    width: 280px;
     top: 40%;
-    left: 55%;
+    left: 40%;
     transform: rotate(3deg); /* Inclinación de la imagen */
 }
 
 .razones-secundario {
     background-color: #fffacd; /* Amarillo pálido/crema */
-    width: 200px;
+    width: 250px;
     top: 30%;
-    left: 75%;
+    left: 65%;
     transform: rotate(-5deg); /* Inclinación de la imagen */
 }
 
