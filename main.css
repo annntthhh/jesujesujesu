@@ -2,7 +2,7 @@
 /* 1. ESTILOS GLOBALES Y ANIMACIÓN DEL CORAZÓN */
 /* -------------------------------------- */
 body {
-    /* CAMBIO 1: Fondo rosa más sutil (bajamos el tono del rosa intermedio) */
+    /* Fondo rosa más sutil */
     background: linear-gradient(135deg, #f9a4b8 0%, #f57795 100%); 
     
     font-family: 'Arial', sans-serif;
@@ -21,20 +21,19 @@ body {
 /* Define la animación para el parpadeo lento y el brillo intenso */
 @keyframes parpadeo-lento {
     0% { 
-        opacity: 0.3; /* Menor opacidad al inicio */
+        opacity: 0.3; 
         box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
     }
     50% { 
-        opacity: 1; /* Brillo máximo */
-        box-shadow: 0 0 15px rgba(255, 255, 255, 1); /* Mucho más resplandor */
+        opacity: 1; 
+        box-shadow: 0 0 15px rgba(255, 255, 255, 1); 
     } 
     100% { 
-        opacity: 0.3; /* Vuelve a la baja opacidad */
+        opacity: 0.3; 
         box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
     }
 }
 
-/* Usa un fondo animado de múltiples gradientes radiales pequeños (destellos) */
 body::before {
     content: '';
     position: fixed; 
@@ -43,16 +42,13 @@ body::before {
     width: 100%; 
     height: 100%;
     
-    /* Aumentamos la opacidad de los destellos y la densidad */
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 1.5px, transparent 1px),
                 radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.5px, transparent 1px),
                 radial-gradient(circle, rgba(255, 255, 255, 0.7) 1.5px, transparent 1px);
     
-    /* Distribuye los destellos en patrones fijos */
     background-size: 50px 50px, 80px 80px, 120px 120px;
     background-color: transparent;
     
-    /* CAMBIO 2: Parpadeo muy lento (duración de 6s) y sin 'alternate' */
     animation: parpadeo-lento 6s infinite; 
     z-index: -1; 
 }
@@ -67,7 +63,6 @@ body::before {
 
 /* -------------------------------------- */
 /* 2. DISEÑO DE LA TARJETA CENTRAL */
-/* (El resto del código permanece igual) */
 /* -------------------------------------- */
 .tarjeta-contenedor {
     perspective: 1000px;
@@ -91,21 +86,25 @@ body::before {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* -------------------------------------- */
+/* 3. ELEMENTO PRINCIPAL: EL CORAZÓN */
+/* -------------------------------------- */
 .corazon-animado {
     width: 60px;
     height: 60px;
-    background-color: #ff69b4; 
+    background-color: #8B0000; /* CAMBIO 2: Rojo oscuro para el corazón */
     position: relative;
     margin: 30px auto;
     transform: rotate(-45deg);
     animation: latido 1.5s infinite; 
 }
+/* Creación de la forma del corazón con pseudo-elementos */
 .corazon-animado::before,
 .corazon-animado::after {
     content: "";
     width: 60px;
     height: 60px;
-    background-color: #ff69b4;
+    background-color: #8B0000; /* CAMBIO 3: Rojo oscuro para los pseudo-elementos del corazón */
     border-radius: 50%;
     position: absolute;
 }
@@ -118,6 +117,9 @@ body::before {
     left: 0;
 }
 
+/* -------------------------------------- */
+/* 4. ESTILOS DE TEXTO */
+/* -------------------------------------- */
 h1 {
     font-size: 1.8em;
     color: #444;
@@ -132,7 +134,7 @@ h1 {
 }
 
 .firma {
-    color: #ff69b4;
+    color: #7C0A02; /* CAMBIO 4: Color Borgoña/Rojo oscuro para la firma */
     font-style: italic;
     font-weight: bold;
     margin-top: 30px !important;
