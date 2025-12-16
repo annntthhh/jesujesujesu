@@ -2,9 +2,7 @@
 /* 1. ESTILOS GLOBALES Y ANIMACIÓN DEL CORAZÓN */
 /* -------------------------------------- */
 body {
-    /* Fondo: Vuelve al rosa sutil de la Versión 5 */
     background: linear-gradient(135deg, #f9a4b8 0%, #f57795 100%); 
-    
     font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
@@ -17,21 +15,10 @@ body {
 /* -------------------------------------- */
 /* EFECTO DE DESTELLOS/PARTÍCULAS */
 /* -------------------------------------- */
-
-/* Define la animación para el parpadeo lento y el brillo intenso */
 @keyframes parpadeo-lento {
-    0% { 
-        opacity: 0.3; 
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
-    }
-    50% { 
-        opacity: 1; 
-        box-shadow: 0 0 15px rgba(255, 255, 255, 1); 
-    } 
-    100% { 
-        opacity: 0.3; 
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
-    }
+    0% { opacity: 0.3; box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
+    50% { opacity: 1; box-shadow: 0 0 15px rgba(255, 255, 255, 1); } 
+    100% { opacity: 0.3; box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
 }
 
 body::before {
@@ -41,18 +28,14 @@ body::before {
     left: 0;
     width: 100%; 
     height: 100%;
-    
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 1.5px, transparent 1px),
                 radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.5px, transparent 1px),
                 radial-gradient(circle, rgba(255, 255, 255, 0.7) 1.5px, transparent 1px);
-    
     background-size: 50px 50px, 80px 80px, 120px 120px;
     background-color: transparent;
-    
     animation: parpadeo-lento 6s infinite; 
     z-index: -1; 
 }
-
 
 /* Animación de latido del corazón */
 @keyframes latido {
@@ -65,25 +48,25 @@ body::before {
 /* 2. DISEÑO DE LA TARJETA Y VOLTEO 3D */
 /* -------------------------------------- */
 .tarjeta-contenedor {
-    perspective: 1000px; /* NECESARIO para el efecto 3D */
+    perspective: 1000px; 
 }
 
 /* Contenedor principal de la tarjeta volteable */
 .tarjeta {
     width: 350px;
-    height: auto; 
-    background-color: transparent; /* Fondo transparente ya que las caras lo tendrán */
+    /* CORRECCIÓN CLAVE 1: Usar min-height para que la altura se autoajuste al contenido más grande */
+    min-height: 450px; 
+    
+    background-color: transparent; 
     border-radius: 20px;
-    box-shadow: none; /* Quitamos la sombra del contenedor */
+    box-shadow: none; 
     padding: 0;
     text-align: center;
     position: relative;
     z-index: 10;
-
-    /* Propiedades para la animación 3D */
     transform-style: preserve-3d;
     transition: transform 0.8s ease-in-out; 
-    cursor: pointer; /* Indica que se puede hacer clic */
+    cursor: pointer; 
 }
 
 /* Gira la tarjeta 180 grados al hacer clic */
@@ -95,21 +78,22 @@ body::before {
 .frente, .reverso {
     position: absolute;
     width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Oculta la cara cuando está girada */
-    background-color: white; /* El color blanco de la tarjeta */
+    /* CORRECCIÓN CLAVE 2: Usar 100% de altura para asegurar que ambas caras son iguales */
+    height: 100%; 
+    
+    backface-visibility: hidden; 
+    background-color: white; 
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.05); 
     padding: 30px;
     top: 0;
     left: 0;
-    /* Ajustamos el tamaño mínimo para el reverso */
-    min-height: 450px; 
     
     /* Centrado del contenido en el reverso */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box; /* Asegura que el padding no afecte el 100% del alto */
 }
 
 /* La cara del reverso se inicia girada 180 grados */
@@ -158,7 +142,6 @@ h1 {
     font-size: 2.5em; 
 }
 
-/* Estilo para los párrafos de ambas caras */
 .contenido-mensaje p {
     color: #333; 
     font-family: 'Arial', sans-serif; 
@@ -181,7 +164,7 @@ h1 {
 
 .reverso-contenido h2 {
     font-size: 1.8em;
-    color: #8B0000; /* Color rojo del corazón */
+    color: #8B0000; 
     margin-bottom: 10px;
     font-family: 'Sacramento', cursive;
     text-align: center;
