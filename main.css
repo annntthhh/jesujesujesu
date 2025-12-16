@@ -32,8 +32,9 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    z-index: 2000; /* Asegura que esté encima de todo */
+    z-index: 2000; 
     text-align: center;
+    transition: opacity 0.5s ease-out; /* Para la transición al abrir */
 }
 
 .bloqueador-pantalla h2 {
@@ -330,4 +331,62 @@ h1 {
         opacity: 0;
         transform: translate(-50%, -100px) rotate(-45deg) scale(0.8); 
     }
+}
+
+/* -------------------------------------- */
+/* 7. ESTILOS DE CORAZONES FLOTANTES (PANTALLA CLAVE) */
+/* -------------------------------------- */
+
+.corazon-flotante {
+    position: absolute;
+    width: 25px; 
+    height: 25px;
+    background-color: #8B0000; 
+    transform: rotate(-45deg);
+    pointer-events: none; 
+    opacity: 0;
+    z-index: 1999; 
+}
+
+/* Las dos partes circulares del corazón */
+.corazon-flotante::before,
+.corazon-flotante::after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    background-color: #8B0000;
+    border-radius: 50%;
+    position: absolute;
+}
+.corazon-flotante::before {
+    left: -12.5px;
+    top: 0;
+}
+.corazon-flotante::after {
+    top: -12.5px;
+    left: 0;
+}
+
+/* Animación de flotación (para corazones que vienen de ABAJO) */
+@keyframes flotar-arriba {
+    0% { transform: translateY(0) rotate(-45deg) scale(0.6); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) rotate(-45deg) scale(1); opacity: 0; }
+}
+
+/* Animación de flotación (para corazones que vienen de ARRIBA) */
+@keyframes flotar-abajo {
+    0% { transform: translateY(0) rotate(-45deg) scale(0.6); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(100vh) rotate(-45deg) scale(1); opacity: 0; }
+}
+
+/* Animación de explosión (para cuando llegan al centro) */
+@keyframes explotar {
+    0% { transform: scale(1) rotate(-45deg); opacity: 1; }
+    100% { transform: scale(2.5) rotate(-45deg); opacity: 0; }
+}
+
+.corazon-flotante.explotando {
+    animation: explotar 0.5s ease-out forwards;
 }
