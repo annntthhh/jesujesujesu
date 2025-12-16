@@ -1,8 +1,4 @@
-/* -------------------------------------- */
-/* ESTILO GLOBAL PEANUTS (Fondo y Bordes) */
-/* -------------------------------------- */
 body {
-    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -17,11 +13,8 @@ body {
     overflow: hidden;
 }
 
-/* -------------------------------------- */
-/* FONDO: CIELO Y CÉSPED (COLORES PLANOS) */
-/* -------------------------------------- */
 .cielo {
-    background-color: #add8e6; /* Azul claro */
+    background-color: #add8e6;
     height: 65%;
     position: absolute;
     width: 100%;
@@ -29,42 +22,36 @@ body {
 }
 
 .cesped {
-    background-color: #8fbc8f; /* Verde oliva/bosque */
+    background-color: #8fbc8f;
     height: 35%;
     position: absolute;
     width: 100%;
     bottom: 0;
 }
 
-/* -------------------------------------- */
-/* LA CASITA DE SNOOPY (CENTRADA) */
-/* -------------------------------------- */
 .casita-contenedor {
     position: absolute;
-    bottom: 25%; /* Altura sobre el césped */
-    left: 50%; /* Posicionamiento horizontal */
-    transform: translateX(-50%); /* CENTRA horizontalmente */
-    width: 300px; /* Tamaño un poco más grande */
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
     height: 200px;
     z-index: 10;
 }
 
-/* TECHO ROJO (Inclinado y con Borde) */
 .techo {
-    background-color: #ff4500; /* Rojo vibrante */
+    background-color: #ff4500;
     height: 50px;
     width: 100%;
     border: 6px solid black;
     border-bottom: none;
     box-sizing: border-box;
-    /* La inclinación característica de la casita */
     transform: skewX(-20deg); 
     position: absolute;
     top: -25px;
-    left: 15px; /* Desplazado ligeramente para simular perspectiva */
+    left: 15px;
 }
 
-/* CUERPO BLANCO */
 .cuerpo {
     background-color: white;
     height: 180px;
@@ -75,7 +62,6 @@ body {
     position: relative;
 }
 
-/* PUERTA NEGRA */
 .puerta {
     background-color: black;
     width: 50px;
@@ -83,6 +69,5 @@ body {
     position: absolute;
     bottom: 0;
     left: 20px;
-    /* Para darle un toque más de cómic */
     border-top-right-radius: 5px; 
 }
