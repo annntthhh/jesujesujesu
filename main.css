@@ -1,80 +1,54 @@
 /* -------------------------------------- */
-/* 1. CONFIGURACIÓN BASE Y ESTILO DE CÓMIC */
+/* CONFIGURACIÓN BASE Y FONDO LIMPIO */
 /* -------------------------------------- */
 body {
-    /* Agrega un fondo sutil que simula papel o textura de impresión antigua */
-    background-color: #f0f0f0; 
-    /* Esta imagen es un gradiente repetido para simular puntos o ruido de impresión */
-    background-image: radial-gradient(circle, #00000010 1px, transparent 1px);
-    background-size: 8px 8px; /* Tamaño de los "puntos" */
-    
-    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    overflow: hidden;
+}
+
+.escena-peanuts {
+    width: 100vw;
+    height: 100vh;
+    border: 8px solid black; 
     box-sizing: border-box;
-    /* Cursor personalizado (opcional, pero añade estilo) */
-    cursor: crosshair; 
+    position: relative;
+    overflow: hidden;
 }
 
 /* -------------------------------------- */
-/* 2. EL MARCO PRINCIPAL (Tira de Cómic) */
+/* FONDO: CIELO Y CÉSPED (El estilo que sí funciona) */
 /* -------------------------------------- */
-.contenedor-comic {
-    width: 900px; 
-    padding: 20px;
-    background-color: #ffffff; 
-    border: 10px solid black; /* Borde muy grueso, como el marco de una tira de cómic */
-    /* Sombra que simula el grosor del panel, ligeramente desenfocada */
-    box-shadow: 6px 6px 0 black; 
-    display: flex;
-    flex-wrap: wrap; 
+.cielo {
+    background-color: #add8e6; /* Azul claro */
+    height: 70%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.cesped {
+    background-color: #8fbc8f; /* Verde oliva/bosque */
+    height: 30%;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 /* -------------------------------------- */
-/* 3. PANELES INTERNOS (Estilo de Boceto/Lápiz) */
+/* POSICIONAMIENTO DE LA IMAGEN IDEAL */
 /* -------------------------------------- */
-.panel {
-    /* Usamos una línea doble para simular un boceto o un dibujo rápido */
-    border: 4px dashed black; 
-    border-radius: 5px; /* Ligeramente redondeado */
-    padding: 20px;
-    margin: 10px;
-    box-sizing: border-box;
-    min-height: 400px; /* Tamaño generoso para dibujar */
-}
-
-/* Panel 1 (Principal) */
-.panel-1 {
-    width: 60%; 
-    background-color: #fcfcfc; /* Blanco muy sutil */
-    /* Ligera inclinación para simular el dibujo a mano */
-    transform: rotate(0.5deg); 
-}
-
-/* Panel 2 (Secundario/Acento) */
-.panel-2 {
-    width: 33%; 
-    background-color: #fffacd; /* Tonalidad amarilla pálida para contraste */
-    /* Inclinación opuesta */
-    transform: rotate(-1.5deg);
-    /* Borde sólido para diferenciar */
-    border: 4px solid black; 
-}
-
-/* -------------------------------------- */
-/* 4. ELEMENTOS DE PRUEBA (Para ver los detalles) */
-/* -------------------------------------- */
-.elemento-central {
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(#d82e2e, #a81c1c); /* Fondo rojo degradado */
+.ilustracion-central {
+    position: absolute;
+    width: 60%; /* La imagen ocupará el 60% del ancho de la pantalla */
+    height: auto;
+    
+    /* CENTRADO PERFECTO en la escena */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    
+    /* Le añadimos el borde grueso para integrarla en el estilo cómic */
     border: 5px solid black;
-    border-radius: 50%;
-    margin: 40px auto;
-    /* Simulación de un elemento central dibujado */
-    transform: rotate(3deg);
+    box-shadow: 5px 5px 0 black;
 }
