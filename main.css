@@ -18,10 +18,10 @@ body {
 }
 
 /* -------------------------------------- */
-/* FONDO: CIELO Y CÉSPED */
+/* FONDO: CIELO Y CÉSPED (Colores planos) */
 /* -------------------------------------- */
 .cielo {
-    background-color: #add8e6; /* Azul claro */
+    background-color: #add8e6; 
     height: 65%;
     position: absolute;
     width: 100%;
@@ -29,7 +29,7 @@ body {
 }
 
 .cesped {
-    background-color: #8fbc8f; /* Verde oliva/bosque */
+    background-color: #8fbc8f; 
     height: 35%;
     position: absolute;
     width: 100%;
@@ -37,33 +37,73 @@ body {
 }
 
 /* -------------------------------------- */
-/* LA CASITA (Centrada y con Estilo Fiel) */
+/* NUBES (Dibujadas con formas y bordes) */
+/* -------------------------------------- */
+.nube {
+    position: absolute;
+    background: transparent;
+    border: 3px solid black;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px white, 0 0 0 3px black; /* Simula un relleno blanco con borde negro */
+}
+
+/* Nube 1 (Izquierda superior) */
+.nube-1 {
+    top: 15%; left: 5%;
+    width: 150px; height: 100px;
+    transform: scale(0.8);
+}
+.nube-1::before, .nube-1::after {
+    content: ''; background: white; border: 3px solid black; border-radius: 50%; position: absolute;
+}
+.nube-1::before { width: 80px; height: 60px; top: -30px; left: 10px; }
+.nube-1::after { width: 100px; height: 80px; top: -10px; right: -20px; }
+
+/* Nube 2 (Superior central) */
+.nube-2 {
+    top: 5%; left: 40%;
+    width: 120px; height: 80px;
+    transform: scale(1.1);
+}
+.nube-2::before { content: ''; background: white; border: 3px solid black; border-radius: 50%; position: absolute; width: 70px; height: 50px; top: -20px; right: 10px; }
+
+/* Nube 3 (Derecha superior) */
+.nube-3 {
+    top: 20%; right: 10%;
+    width: 180px; height: 110px;
+}
+.nube-3::before { content: ''; background: white; border: 3px solid black; border-radius: 50%; position: absolute; width: 90px; height: 70px; top: 0px; left: -20px; }
+
+
+/* -------------------------------------- */
+/* LA CASITA DE SNOOPY (Centrada y detallada) */
 /* -------------------------------------- */
 .casita-contenedor {
     position: absolute;
-    bottom: 25%; 
-    left: 20%; /* Posicionada a la izquierda, como en la imagen */
-    width: 150px; /* Reducida para que parezca más pequeña */
-    height: 120px;
+    bottom: 20%; 
+    left: 30%; /* Ligeramente a la izquierda para dejar espacio a los mensajes */
+    transform: translateX(-50%); 
+    width: 250px;
+    height: 180px;
     z-index: 10;
 }
 
 .techo {
-    background-color: #ff4500; /* Rojo vibrante */
-    height: 30px;
+    background-color: #d82e2e; /* Rojo de la casita */
+    height: 40px;
     width: 100%;
     border: 4px solid black;
     border-bottom: none;
     box-sizing: border-box;
-    transform: skewX(-20deg); 
+    transform: skewX(-20deg); /* Inclinación característica */
     position: absolute;
-    top: -15px;
-    left: 8px; /* Desplazado ligeramente */
+    top: -20px;
+    left: 10px;
 }
 
 .cuerpo {
     background-color: white;
-    height: 100px;
+    height: 150px;
     width: 100%;
     border: 4px solid black;
     border-top: none;
@@ -73,12 +113,96 @@ body {
 
 .puerta {
     background-color: black;
-    width: 30px;
-    height: 45px;
+    width: 40px;
+    height: 60px;
     position: absolute;
     bottom: 0;
-    left: 10px;
+    left: 15px;
+    border-top-right-radius: 5px; 
 }
+
+/* Pasto que cubre la base de la casa (el estilo de rayones) */
+.pasto-frente {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border-top: 4px solid black;
+    /* Dibujo irregular del pasto con clip-path */
+    clip-path: polygon(0 100%, 10% 50%, 20% 80%, 30% 30%, 40% 90%, 50% 10%, 60% 70%, 70% 40%, 80% 95%, 90% 20%, 100% 100%);
+}
+
+/* -------------------------------------- */
+/* SNOOPY Y BURBUJA */
+/* -------------------------------------- */
+.snoopy-zona {
+    position: absolute;
+    top: -60px; 
+    left: 30%;
+    z-index: 15;
+    transform: rotate(3deg);
+}
+
+/* Snoopy Tumbado (Representación simplificada fiel a la forma) */
+.snoopy {
+    width: 80px;
+    height: 60px;
+    background: white;
+    border: 4px solid black;
+    border-radius: 50%;
+    position: relative;
+}
+.snoopy::after { /* Simula el oído */
+    content: '';
+    position: absolute;
+    width: 20px; height: 40px;
+    background: black;
+    border-radius: 0 50% 50% 0;
+    top: -10px; right: 0;
+    transform: rotate(10deg);
+}
+
+/* Burbuja de pensamiento con sus "colas" */
+.burbuja {
+    position: absolute;
+    top: -80px;
+    left: 60px;
+    width: 80px; height: 50px;
+    background: white;
+    border: 4px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Colas de la burbuja */
+.burbuja::before {
+    content: '';
+    position: absolute;
+    width: 10px; height: 10px;
+    background: white;
+    border: 4px solid black;
+    border-radius: 50%;
+    bottom: -10px; left: 10px;
+}
+.burbuja::after {
+    content: '';
+    position: absolute;
+    width: 5px; height: 5px;
+    background: white;
+    border: 4px solid black;
+    border-radius: 50%;
+    bottom: -20px; left: 5px;
+}
+
+.icono {
+    font-size: 1.2em;
+    position: absolute;
+}
+.corazon { top: 10px; left: 10px; }
+.nota { top: 20px; right: 10px; }
 
 /* -------------------------------------- */
 /* CUADROS DE MENSAJE (Bocadillos Inclinados) */
@@ -88,24 +212,24 @@ body {
     border: 4px solid black;
     padding: 15px;
     line-height: 1.4;
-    box-shadow: 4px 4px 0 black; /* Sombra estilo cómic */
+    box-shadow: 4px 4px 0 black;
     z-index: 20;
 }
 
 .mensaje-principal {
     background-color: white;
-    width: 280px;
+    width: 220px;
     top: 40%;
-    left: 40%;
-    transform: rotate(3deg); /* Inclinación de la imagen */
+    left: 55%;
+    transform: rotate(3deg); /* Inclinación del bocadillo de la imagen */
 }
 
 .razones-secundario {
     background-color: #fffacd; /* Amarillo pálido/crema */
-    width: 250px;
+    width: 200px;
     top: 30%;
-    left: 65%;
-    transform: rotate(-5deg); /* Inclinación de la imagen */
+    left: 75%;
+    transform: rotate(-5deg); /* Inclinación del bocadillo de la imagen */
 }
 
 .cuadro-mensaje h2, .cuadro-mensaje h3 {
